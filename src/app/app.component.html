@@ -1,5 +1,20 @@
-<button routerLink="/customers">Customers</button>
-<button routerLink="/orders">Orders</button>
-<button routerLink="">Home</button>
+<mat-toolbar color="primary" class="nav-bar">
+  <button mat-button routerLink="">Home</button>
+  <button mat-button routerLink="/about">About</button>
+  <button mat-button  routerLink="/products">Products</button>
+  <button mat-button routerLink="/classes">Classes</button>
+</mat-toolbar>
 
-<router-outlet></router-outlet>
+<main class="container mt-5">
+  <router-outlet></router-outlet>
+</main>
+
+<footer >
+  <div class="container">
+    <p>Made with <mat-icon aria-hidden="true" color="primary">favorite</mat-icon> 2020</p>
+  </div>
+</footer>
+
+
+
+
