@@ -13,6 +13,7 @@ import { MatButtonModule } from '@angular/material/button';
 import {MatListModule} from '@angular/material/list';
 import {CdkTableModule} from '@angular/cdk/table';
 import {MatIconModule} from '@angular/material/icon';
+import {ApiService} from './api.service';
 
 @NgModule({
   declarations: [
@@ -27,11 +28,9 @@ import {MatIconModule} from '@angular/material/icon';
     MatMenuModule,
     MatToolbarModule,
     MatButtonModule,
-    MatListModule,
-    CdkTableModule,
     MatIconModule,
   ],
-  providers: [],
+  providers: [ApiService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import {HttpClient, HttpErrorResponse} from '@angular/common/http';
+import {ApiService} from '../api.service';
+import {HttpErrorResponse} from '@angular/common/http';
 
 @Component({
   selector: 'app-products',
@@ -8,18 +9,15 @@ import {HttpClient, HttpErrorResponse} from '@angular/common/http';
 })
 export class ProductsComponent implements OnInit {
   dataObj: any;
-  constructor(private httpService: HttpClient) { }
-  ngOnInit(): void {
-    this.loadData();
+  constructor(private httpService: ApiService) { }
+  ngOnInit() {
+     this.httpService
+      .loadData()
+      .subscribe( response => {
+          this.dataObj = response;
+        },
+        (err: HttpErrorResponse) => {
+          console.log (err.message);
+        });
   }
-  loadData() {
-    this.httpService.get('https://api.coinpaprika.com/v1/exchanges').subscribe(
-      response => {
-        this.dataObj = response;
-      },
-      (err: HttpErrorResponse) => {
-        console.log (err.message);
-      });
-  }
-
 }
