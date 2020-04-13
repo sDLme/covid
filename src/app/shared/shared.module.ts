@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import {ConsoleService} from '../core/services/console.service';
+import { ConsoleService } from '../core/services/console.service';
+import { AppModule } from '../app.module';
 
 
 
@@ -8,16 +9,8 @@ import {ConsoleService} from '../core/services/console.service';
   declarations: [],
   imports: [
     CommonModule,
-  ],
-  providers: [],
+  ]
 })
 export class SharedModule {
 
-  static forRoot() {
-    return {
-      ngModule: SharedModule,
-      providers: ConsoleService
-    };
-
-}
 }

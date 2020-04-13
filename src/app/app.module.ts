@@ -2,7 +2,6 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { HttpClientModule } from '@angular/common/http';
 
-import { SharedModule } from './shared/shared.module';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -19,6 +18,10 @@ import {MatButtonModule} from '@angular/material/button';
 import {MatDividerModule} from '@angular/material/divider';
 import { ShowingAuthorComponent } from './shared/components/showing-author/showing-author.component';
 
+import { ApiService } from './core/services/api.service';
+import { ConsoleService } from './core/services/console.service';
+import { SharedModule } from './shared/shared.module';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -30,13 +33,22 @@ import { ShowingAuthorComponent } from './shared/components/showing-author/showi
     AppRoutingModule,
     BrowserAnimationsModule,
     HttpClientModule,
-    SharedModule,
     MatIconModule,
     MatToolbarModule,
     MatMenuModule,
     MatButtonModule,
     MatDividerModule
   ],
+  providers: [
+    ApiService,
+    ConsoleService ],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {
+  static forRoot() {
+    return {
+      ngModule: SharedModule,
+      providers: [ConsoleService]
+    };
+  }
+}
