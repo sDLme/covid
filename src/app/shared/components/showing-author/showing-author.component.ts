@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
 /// service
-import { ConsoleService } from '../../services/console.service';
+import { ConsoleService } from '../../../core/services/console.service';
 
 @Component({
   selector: 'app-showing-author',
