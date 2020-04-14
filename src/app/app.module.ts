@@ -30,6 +30,7 @@ import { SharedModule } from './shared/shared.module';
   ],
   imports: [
     BrowserModule,
+    SharedModule.forRoot(),
     AppRoutingModule,
     BrowserAnimationsModule,
     HttpClientModule,
@@ -45,10 +46,4 @@ import { SharedModule } from './shared/shared.module';
   bootstrap: [AppComponent]
 })
 export class AppModule {
-  static forRoot() {
-    return {
-      ngModule: SharedModule,
-      providers: [ConsoleService]
-    };
-  }
 }
