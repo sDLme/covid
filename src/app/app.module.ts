@@ -1,26 +1,25 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { HttpClientModule } from '@angular/common/http';
-
-
-import { AppRoutingModule } from './app-routing.module';
-import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { ShowingAuthorComponent } from './shared/components/showing-author/showing-author.component';
 
-import { HomeComponent } from './features/home/home.component';
+// modules
+import { AppRoutingModule } from './app-routing.module';
+import { SharedModule } from './shared/shared.module';
+import { CoreModule } from './core/core.module';
+
+
+// components
+import { AppComponent } from './app.component';
+import { HomeComponent } from './features/home/home-page/home.component';
+
+// material
 import {MatIconModule} from '@angular/material/icon';
 import {MatToolbarModule} from '@angular/material/toolbar';
-
-
-
 import {MatMenuModule} from '@angular/material/menu';
 import {MatButtonModule} from '@angular/material/button';
 import {MatDividerModule} from '@angular/material/divider';
-import { ShowingAuthorComponent } from './shared/components/showing-author/showing-author.component';
-
-import { ApiService } from './core/services/api.service';
-import { ConsoleService } from './core/services/console.service';
-import { SharedModule } from './shared/shared.module';
 
 @NgModule({
   declarations: [
@@ -30,7 +29,8 @@ import { SharedModule } from './shared/shared.module';
   ],
   imports: [
     BrowserModule,
-    SharedModule.forRoot(),
+    SharedModule,
+    CoreModule.forRoot(),
     AppRoutingModule,
     BrowserAnimationsModule,
     HttpClientModule,
@@ -40,9 +40,7 @@ import { SharedModule } from './shared/shared.module';
     MatButtonModule,
     MatDividerModule
   ],
-  providers: [
-    ApiService,
-    ConsoleService ],
+  providers: [],
   bootstrap: [AppComponent]
 })
 export class AppModule {

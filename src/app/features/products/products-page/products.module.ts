@@ -6,7 +6,7 @@ import { ProductsComponent } from './products.component';
 import { MatDividerModule } from '@angular/material/divider';
 
 /// service
-import { ApiService } from '../../core/services/api.service';
+import { ApiService } from '../../../core/services/api.service';
 
 
 
