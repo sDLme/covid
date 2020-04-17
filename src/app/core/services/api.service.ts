@@ -1,13 +1,17 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import {environment} from '../../../environments/environment';
 
 @Injectable({
   providedIn: 'root'
 })
 export  class ApiService  {
+
+  private API_URL = `${environment.apiUrl}`;
+
   constructor(private httpService: HttpClient) {}
   loadData() {
-   return this.httpService.get('https://api.coinpaprika.com/v1/exchanges');
+   return this.httpService.get(this.API_URL);
   }
 
 }
