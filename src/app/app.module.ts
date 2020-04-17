@@ -16,9 +16,7 @@ import { HomeComponent } from './features/home/home-page/home.component';
 
 // material
 import {MatIconModule} from '@angular/material/icon';
-import {MatToolbarModule} from '@angular/material/toolbar';
 import {MatMenuModule} from '@angular/material/menu';
-import {MatButtonModule} from '@angular/material/button';
 import {MatDividerModule} from '@angular/material/divider';
 
 @NgModule({
@@ -35,9 +33,7 @@ import {MatDividerModule} from '@angular/material/divider';
     BrowserAnimationsModule,
     HttpClientModule,
     MatIconModule,
-    MatToolbarModule,
     MatMenuModule,
-    MatButtonModule,
     MatDividerModule
   ],
   providers: [],
