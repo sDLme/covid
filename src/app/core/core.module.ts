@@ -3,15 +3,13 @@ import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
 
 // components
-import { HeaderComponent } from './header/header.component';
-import { FooterComponent } from './footer/footer.component';
+import { HeaderComponent } from './components/header/header.component';
+import { FooterComponent } from './components/footer/footer.component';
+import { CoreLayoutComponent } from './core-layout.component';
 
 // services
 import { ConsoleService } from './services/console.service';
 import { ApiService } from './services/api.service';
-
-// components
-import { LayoutComponent } from './layout.component';
 
 // material
 import { MatIconModule} from '@angular/material/icon';
@@ -21,11 +19,11 @@ import { MatButtonModule } from '@angular/material/button';
 
 
 @NgModule({
-  declarations: [HeaderComponent, FooterComponent, LayoutComponent],
+  declarations: [HeaderComponent, FooterComponent, CoreLayoutComponent],
   exports: [
     HeaderComponent,
     FooterComponent,
-    LayoutComponent
+    CoreLayoutComponent
   ],
   imports: [
     CommonModule,
