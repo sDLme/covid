@@ -1,0 +1,33 @@
+<form
+  [formGroup]="myFirstReactiveForm"
+  (submit)="onSubmit()">
+
+  <input type="text"  formControlName="name" placeholder="Name" />
+  <div class="error" *ngIf="isControlInvalid('name')">
+    Field is required
+  </div>
+  <br/><br/>
+
+  <input type="text" formControlName="email" placeholder="Email" />
+  <div class="error" *ngIf="isControlInvalid('email')">
+    Field is required
+  </div>
+  <br/><br/>
+
+
+  <select formControlName="select">
+    <option disabled value="null">choose role</option>
+    <option *ngFor="let userType of userTypes">{{ userType }}</option>
+  </select>
+  <br><br>
+
+  <textarea formControlName="body" placeholder="Put your text ..."></textarea>
+  <div class="error" *ngIf="isControlInvalid('body')">
+    Field is required
+  </div>
+  <br><br>
+
+  <button type="submit">Submit</button>
+</form>
+
+<div>{{ myFirstReactiveForm.value|json }}</div>
