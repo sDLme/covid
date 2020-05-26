@@ -1,4 +1,5 @@
 # Covid
+ This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 9.1.0.
 
 ## папка core
 Содержит:
@@ -14,7 +15,6 @@
 Содержит:
  Компоненты Дерективы Пайпы Сервисы - которые реюзаются по приложению
  
- This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 9.1.0.
  
  ## Development server
  
