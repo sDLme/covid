@@ -1,12 +1,17 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
+// modules
 import { ProductsRoutingModule } from './products-routing.module';
-import { ProductsComponent } from './products.component';
-import { MatDividerModule } from '@angular/material/divider';
 
-/// service
+// service
 import { ApiService } from '../../../core/services/api.service';
+
+// components
+import { ProductsComponent } from './products.component';
+
+// material
+import { MatDividerModule } from '@angular/material/divider';
 
 
 

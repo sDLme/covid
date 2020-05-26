@@ -2,6 +2,9 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { HttpClientModule } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+
+// services
+// it is necessary for using Singleton exemplar for app
 import { ShowingAuthorComponent } from './shared/components/showing-author/showing-author.component';
 
 // modules
@@ -12,7 +15,7 @@ import { CoreModule } from './core/core.module';
 
 // components
 import { AppComponent } from './app.component';
-import { HomeComponent } from './features/home/home-page/home.component';
+import { HomeComponent } from './features/pages/home-page/home.component';
 
 // material
 import {MatIconModule} from '@angular/material/icon';

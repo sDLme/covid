@@ -10,6 +10,7 @@ export  class ApiService  {
   private API_URL = `${environment.apiUrl}`;
 
   constructor(private httpService: HttpClient) {}
+
   loadData() {
    return this.httpService.get(this.API_URL);
   }

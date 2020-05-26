@@ -1,9 +1,9 @@
-import { ModuleWithProviders, NgModule} from '@angular/core';
+import { NgModule} from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ReactiveFormsModule } from '@angular/forms';
-import { ContactFormComponent } from './components/contact-form/contact-form.component';
-import { ClassesModule } from '../features/classes/classes-page/classes.module';
 
+// components
+import { ContactFormComponent } from './components/contact-form/contact-form.component';
 
 
 @NgModule({
@@ -13,7 +13,6 @@ import { ClassesModule } from '../features/classes/classes-page/classes.module';
   ],
   imports: [
     CommonModule,
-    ClassesModule,
     ReactiveFormsModule,
   ]
 })

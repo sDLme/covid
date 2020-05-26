@@ -1,13 +1,13 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule, PreloadAllModules } from '@angular/router';
-import { HomeComponent } from './features/home/home-page/home.component';
+import { HomeComponent } from './features/pages/home-page/home.component';
 
 
 const routes: Routes = [
   { path: '', component: HomeComponent, },
-  { path: 'about', loadChildren: () => import('./features/about/about-page/about.module').then(m => m.AboutModule) },
-  { path: 'products', loadChildren: () => import('./features/products/products-page/products.module').then(m => m.ProductsModule) },
-  { path: 'classes', loadChildren: () => import('./features/classes/classes-page/classes.module').then(m => m.ClassesModule) }
+  { path: 'about', loadChildren: () => import('./features/pages/about-page/about.module').then(m => m.AboutModule) },
+  { path: 'products', loadChildren: () => import('./features/pages/products-page/products.module').then(m => m.ProductsModule) },
+  { path: 'classes', loadChildren: () => import('./features/pages/classes-page/classes.module').then(m => m.ClassesModule) }
   ];
 
 @NgModule({
