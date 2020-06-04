@@ -1,0 +1,76 @@
+<h1>Registration form</h1>
+
+<section>
+  <form [formGroup]="registrationForm" (submit)="onSubmit()">
+  
+    <input type="text" formControlName="name" required>
+    <div *ngIf="isControlInvalid('name')" class="alert alert-danger">
+      Field is required
+
+    </div>
+
+    
+    <input type="email" formControlName="email">
+    <div *ngIf="isControlInvalid('email')" class="alert alert-danger">
+      Field is required
+    </div>
+    
+  
+    <ng-select
+      class="country-select"
+      hideSelected="true"
+      formControlName="country_select"
+      [items]="countries"
+      [searchable]="false"
+      [clearable]="false">
+
+      <ng-template ng-label-tmp let-item="item">
+        {{ item | uppercase }}
+      </ng-template>
+
+      <ng-template ng-option-tmp let-item="item" let-index="index" let-search="searchTerm">
+        {{ item | uppercase}}
+      </ng-template>
+
+    </ng-select>
+    <div class="error" *ngIf="isControlInvalid('country_select')">
+      Field is required
+    </div>
+    
+
+    <ng-select
+      class="country-select"
+      hideSelected="true"
+      formControlName="area_select"
+      [items]="areas"
+      [searchable]="false"
+      [clearable]="false">
+      <ng-template ng-label-tmp let-item="item">
+        {{ item  }}
+      </ng-template>
+      <ng-template ng-option-tmp let-item="item" let-index="index" let-search="searchTerm">
+        <span>{{ item  }}</span>
+      </ng-template>
+    </ng-select>
+  
+
+    <input type="password" formControlName="password">
+    <div *ngIf="isControlInvalid('email')" class="alert alert-danger">
+      Field is required
+    
+    </div>
+  
+    
+    <input type="password" formControlName="confirm_pass">
+    <div *ngIf="isControlInvalid('email')" class="alert alert-danger">
+      <div class="error">
+        Not the same 
+      </div>
+    </div>
+  
+    
+    <button type="submit">Submit</button>
+
+  </form>
+
+</section>
