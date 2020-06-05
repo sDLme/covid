@@ -1,25 +1,52 @@
 <h1>Registration form</h1>
 
 <section>
-  <form [formGroup]="registrationForm" (submit)="onSubmit()">
-  
-    <input type="text" formControlName="name" required>
-    <div *ngIf="isControlInvalid('name')" class="alert alert-danger">
-      Field is required
+  <form 
+  class="col-8 m-auto"
+  [formGroup]="registrationForm" 
+  (ngSubmit)="onSubmit()">
 
+
+  <div class="form-group">
+    <input 
+    class="form-control" 
+    type="text" 
+    formControlName="name">
+
+    <div *ngIf="registrationForm.get('name').invalid && (registrationForm.get('name').dirty || registrationForm.get('name').touched)"
+         class="alert alert-danger">
+
+    <div *ngIf="registrationForm.get('name').errors.required">
+      Name is required.
+    </div>
+    <div *ngIf="registrationForm.get('name').errors.minlength">
+      Name must be at least 4 characters long.
+    </div>
+
+  </div>
+</div>
+
+
+
+
+  
+
+    <div class="form-group">
+      <input 
+      class="form-control"  
+      type="email" 
+      formControlName="email">
+      <div *ngIf="registrationForm.get('email').invalid && registrationForm.get('email').touched" class="alert alert-danger">
+        Field is not valid
+      </div>
     </div>
 
     
-    <input type="email" formControlName="email">
-    <div *ngIf="isControlInvalid('email')" class="alert alert-danger">
-      Field is required
-    </div>
-    
-  
-    <ng-select
+    <div class="form-group">
+      <ng-select
       class="country-select"
       hideSelected="true"
-      formControlName="country_select"
+      formControlName="countrySelect"
       [items]="countries"
       [searchable]="false"
       [clearable]="false">
@@ -33,15 +60,18 @@
       </ng-template>
 
     </ng-select>
-    <div class="error" *ngIf="isControlInvalid('country_select')">
+
+    <div *ngIf="registrationForm.get('countrySelect').invalid && registrationForm.get('countrySelect').touched" class="alert alert-danger" >
       Field is required
     </div>
-    
+    </div>
 
-    <ng-select
+   
+    <div class="form-group" *ngIf="showAreas">
+      <ng-select
       class="country-select"
       hideSelected="true"
-      formControlName="area_select"
+      formControlName="areaSelect"
       [items]="areas"
       [searchable]="false"
       [clearable]="false">
@@ -52,24 +82,45 @@
         <span>{{ item  }}</span>
       </ng-template>
     </ng-select>
-  
-
-    <input type="password" formControlName="password">
-    <div *ngIf="isControlInvalid('email')" class="alert alert-danger">
-      Field is required
-    
     </div>
-  
     
-    <input type="password" formControlName="confirm_pass">
-    <div *ngIf="isControlInvalid('email')" class="alert alert-danger">
-      <div class="error">
-        Not the same 
+  
+    <div class="form-group">
+      <input  
+      class="form-control" 
+      type="password" 
+      formControlName="password">
+
+      <div *ngIf="registrationForm.get('password').invalid && registrationForm.get('password').touched" class="alert alert-danger">
+
+        <div *ngIf="registrationForm.get('password').errors.required">
+          Password is required.
+        </div>
+        <div *ngIf="registrationForm.get('password').errors.pattern">
+          Password not valid.
+        </div>
+      
       </div>
     </div>
-  
+
     
-    <button type="submit">Submit</button>
+    <div class="form-group">
+      <input 
+      class="form-control"  
+      type="password" 
+      formControlName="confirmPass">
+
+      <div *ngIf="registrationForm.get('confirmPass').invalid && registrationForm.get('confirmPass').touched" class="alert alert-danger">
+        <div *ngIf="registrationForm.get('confirmPass').errors.required">Confirm Password is required.</div>
+      </div>
+      <div *ngIf="registrationForm.get('confirmPass').valid &&registrationForm.get('password').value !== registrationForm.get('confirmPass').value" class="alert alert-danger">Password and Confirm Password must be match.</div>
+    </div>
+    
+      
+    <button 
+    class="btn btn-success" 
+    type="submit"
+    [disabled]="registrationForm.invalid || registrationForm.get('password').value !== registrationForm.get('confirmPass').value ">Submit</button>
 
   </form>
 
