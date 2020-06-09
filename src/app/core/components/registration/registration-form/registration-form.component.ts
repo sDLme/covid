@@ -53,27 +53,16 @@ export class RegistrationFormComponent implements OnInit {
 
   }
 
-  public getControls() {
-  const pass =  this.registrationForm.get('password')
-  const confPass =  this.registrationForm.get('confirmPass')
-
-
- // return pass !== confPass ? 'matchPass' = true : null
-
-
-  }
-
   public checkPasswords(group: FormGroup) { 
   let pass = group.get('password').value;
   let confirmPass = group.get('confirmPass').value;
 
-  console.log(pass, confirmPass)
 
    return pass === confirmPass ? null : { notSame: true }     
 }
 
   public onSubmit() {
-    console.log(this.registrationForm.controls)
+    console.log(this.registrationForm)
     
   };
 
