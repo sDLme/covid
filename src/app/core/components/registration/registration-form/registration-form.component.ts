@@ -17,23 +17,18 @@ export class RegistrationFormComponent implements OnInit {
 
   constructor(
     private fb: FormBuilder,
-  
     ) {
-    
       this.countriesList =  { 
         germany: ['Land Baden-Württemberg', 'Freistaat Bayern', 'Land Berlin', 'Land Brandenburg', 'Freie Hansestadt Bremen'],
         canada: ['British Columbia', 'Alberta', 'Saskatchewan', 'Manitoba', 'Ontario', 'Quebec', 'New Brunswick', 'Prince Edward Island', 'Nova Scotia', 'Newfoundland and Labrador'],
         usa: ['Alabama', 'Alaska', 'Arizona', 'Georgia', ' Idaho', 'Kansas', 'Minnesota', 'New Mexico', 'New York']
     }
-  
    }
 
   ngOnInit(): void {
     this.countries = Object.keys(this.countriesList)
     this.areas = Object.values(this.countriesList[this.countries[0]])
     this.createForm()
-  
-  
   }
 
   /**
@@ -47,7 +42,7 @@ export class RegistrationFormComponent implements OnInit {
       areaSelect: null,
       password: [ null,  [ Validators.required, Validators.pattern('[a-zA-Z ]*')]],
       confirmPass: [ null, [Validators.required] ]
-    });
+    }, {validator: this.checkPasswords});
 
       this.registrationForm.get('countrySelect').valueChanges
       .subscribe( value => {
@@ -58,9 +53,28 @@ export class RegistrationFormComponent implements OnInit {
 
   }
 
+  public getControls() {
+  const pass =  this.registrationForm.get('password')
+  const confPass =  this.registrationForm.get('confirmPass')
+
+
+ // return pass !== confPass ? 'matchPass' = true : null
+
+
+  }
+
+  public checkPasswords(group: FormGroup) { 
+  let pass = group.get('password').value;
+  let confirmPass = group.get('confirmPass').value;
+
+  console.log(pass, confirmPass)
+
+   return pass === confirmPass ? null : { notSame: true }     
+}
 
   public onSubmit() {
     console.log(this.registrationForm.controls)
+    
   };
 
 
