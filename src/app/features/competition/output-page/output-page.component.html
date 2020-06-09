@@ -1,0 +1,27 @@
+
+
+<div class="container">
+
+    <div class="row">
+
+    <div class="col-7">
+
+        <table *ngFor="let member of membersList">
+            <thead >{{ member | json }}</thead>
+            <tbody>
+            
+            </tbody>
+        </table>
+
+
+
+          
+    </div>
+    
+    <div class="col-3">
+        <app-insert-page></app-insert-page>
+    </div>
+
+    </div>
+
+</div>

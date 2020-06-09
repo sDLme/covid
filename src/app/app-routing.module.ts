@@ -1,6 +1,9 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule, PreloadAllModules } from '@angular/router';
+
+// components 
 import { HomeComponent } from './features/pages/home-page/home.component';
+import { OutputPageComponent } from './features/competition/output-page/output-page.component';
 
 
 const routes: Routes = [
@@ -8,7 +11,8 @@ const routes: Routes = [
   { path: 'about', loadChildren: () => import('./features/pages/about-page/about.module').then(m => m.AboutModule) },
   { path: 'registration', loadChildren: () => import('./core/components/registration/registration-page/registration-routing.module').then(m => m.RegistrationRoutingModule) },
   { path: 'products', loadChildren: () => import('./features/pages/products-page/products.module').then(m => m.ProductsModule) },
-  { path: 'classes', loadChildren: () => import('./features/pages/classes-page/classes.module').then(m => m.ClassesModule) }
+  { path: 'classes', loadChildren: () => import('./features/pages/classes-page/classes.module').then(m => m.ClassesModule) },
+  { path: 'insert_page', component: OutputPageComponent }
   ];
 
 @NgModule({
