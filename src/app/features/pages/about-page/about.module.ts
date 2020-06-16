@@ -16,6 +16,7 @@ import { AboutComponent } from './about.component';
         CommonModule,
         AboutRoutingModule,
         SharedModule,
+
     ]
 })
 export class AboutModule { }

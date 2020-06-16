@@ -27,7 +27,7 @@ import {MatDividerModule} from '@angular/material/divider';
   declarations: [
     AppComponent,
     HomeComponent,
-    ShowingAuthorComponent,
+    ShowingAuthorComponent
     ],
   imports: [
     BrowserModule,

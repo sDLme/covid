@@ -1,0 +1,24 @@
+<p>dynamic-form works!</p>
+<form [formGroup]="demoForm">
+  <input
+  type="checkbox"
+  
+  >
+
+  <div formArrayName="demoArray" 
+     *ngFor="let arrayItem of arrayItems; let i=index">
+        
+     <label  
+      class="array-item-title">{{arrayItem.title}}
+
+        <input 
+        type="checkbox"
+        [checked]="arrayItem.check"
+        [formControl]="i">
+
+      </label>
+  
+  </div>
+</form>
+
+

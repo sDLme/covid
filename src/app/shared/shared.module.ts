@@ -7,13 +7,18 @@ import { ContactFormComponent } from './components/contact-form/contact-form.com
 
 //directives
 import { ForScreenDirective } from './directives/for-screen.directive';
+import { DynamicFormComponent } from './components/dynamic-form/dynamic-form.component';
 
 @NgModule({
   declarations: [
     ContactFormComponent, 
-    ForScreenDirective],
+    ForScreenDirective,
+    DynamicFormComponent
+  ],
   exports: [
     ContactFormComponent,
+    ForScreenDirective,
+    DynamicFormComponent
   ],
   imports: [
     CommonModule,
