@@ -1,7 +1,10 @@
-import {ModuleWithProviders, NgModule} from '@angular/core';
+import { ModuleWithProviders, NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
 import { NgSelectModule } from '@ng-select/ng-select';
+
+// modules 
+import { SharedModule } from '../shared/shared.module';
 
 // components
 import { HeaderComponent } from './components/header/header.component';
@@ -18,7 +21,7 @@ import { ApiService } from './services/api.service';
 import { MatIconModule} from '@angular/material/icon';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatButtonModule } from '@angular/material/button';
-import {FormsModule, ReactiveFormsModule} from '@angular/forms';
+import { FormsModule} from '@angular/forms';
 
 
 
@@ -33,8 +36,7 @@ import {FormsModule, ReactiveFormsModule} from '@angular/forms';
   exports: [
     HeaderComponent,
     FooterComponent,
-    CoreLayoutComponent,
-    ReactiveFormsModule
+    CoreLayoutComponent
   ],
   imports: [
     CommonModule,
@@ -44,7 +46,7 @@ import {FormsModule, ReactiveFormsModule} from '@angular/forms';
     MatButtonModule,
     FormsModule,
     NgSelectModule,
-    ReactiveFormsModule
+    SharedModule
   ]
 })
 export class CoreModule {

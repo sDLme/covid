@@ -15,14 +15,7 @@
 
     <div *ngIf="registrationForm.get('name').invalid && (registrationForm.get('name').dirty || registrationForm.get('name').touched)"
          class="alert alert-danger">
-
-    <div *ngIf="registrationForm.get('name').errors.required">
-      Name is required.
-    </div>
-    <div *ngIf="registrationForm.get('name').errors.minlength">
-      Name must be at least 4 characters long.
-    </div>
-
+         <app-validation-errors [errors]="registrationForm.get('name').errors" ></app-validation-errors> 
   </div>
 </div>
 
@@ -37,7 +30,7 @@
       type="email" 
       formControlName="email">
       <div *ngIf="registrationForm.get('email').invalid && registrationForm.get('email').touched" class="alert alert-danger">
-        Field is not valid
+        <app-validation-errors [errors]="registrationForm.get('email').errors " ></app-validation-errors> 
       </div>
     </div>
 
@@ -62,7 +55,7 @@
     </ng-select>
 
     <div *ngIf="registrationForm.get('countrySelect').invalid && registrationForm.get('countrySelect').touched" class="alert alert-danger" >
-      Field is required
+      <app-validation-errors [errors]="registrationForm.get('countrySelect').errors " ></app-validation-errors> 
     </div>
     </div>
 
@@ -92,14 +85,7 @@
       formControlName="password">
 
       <div *ngIf="registrationForm.get('password').invalid && registrationForm.get('password').touched" class="alert alert-danger">
-
-        <div *ngIf="registrationForm.get('password').errors.required">
-          Password is required.
-        </div>
-        <div *ngIf="registrationForm.get('password').errors.pattern">
-          Password not valid.
-        </div>
-      
+        <app-validation-errors [errors]="registrationForm.get('password').errors "></app-validation-errors> 
       </div>
     </div>
 
@@ -111,9 +97,9 @@
       formControlName="confirmPass">
 
       <div *ngIf="registrationForm.get('confirmPass').invalid && registrationForm.get('confirmPass').touched" class="alert alert-danger">
-        <div *ngIf="registrationForm.get('confirmPass').errors.required">Confirm Password is required.</div>
+        <app-validation-errors [errors]="registrationForm.get('confirmPass').errors " ></app-validation-errors> 
       </div>
-      <div *ngIf="registrationForm.get('confirmPass').valid &&registrationForm.get('password').value !== registrationForm.get('confirmPass').value" class="alert alert-danger">Password and Confirm Password must be match.</div>
+      <div *ngIf="registrationForm.get('confirmPass').valid && registrationForm.get('password').value !== registrationForm.get('confirmPass').value" class="alert alert-danger">Password and Confirm Password must be match.</div>
     </div>
     
       

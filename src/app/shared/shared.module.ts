@@ -4,6 +4,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 
 // modules 
 import { DynamicFormModule } from './components/dynamic-form/dynamic-form.module';
+import { ValidationErrorsModule } from './components/validation-errors/validation-errors.module';
 
 // components
 import { ContactFormComponent } from './components/contact-form/contact-form.component';
@@ -19,12 +20,14 @@ import { ForScreenDirective } from './directives/for-screen.directive';
   exports: [
     ContactFormComponent,
     ForScreenDirective,
-    DynamicFormModule
+    DynamicFormModule,
+    ValidationErrorsModule,
   ],
   imports: [
     CommonModule,
     ReactiveFormsModule,
-    DynamicFormModule
+    DynamicFormModule,
+    ValidationErrorsModule
   ]
 })
 export class SharedModule {
