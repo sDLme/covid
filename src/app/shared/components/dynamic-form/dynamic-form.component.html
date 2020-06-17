@@ -1,22 +1,29 @@
 <p>dynamic-form works!</p>
-<form [formGroup]="demoForm">
-  <input
-  type="checkbox"
-  
-  >
 
-  <div formArrayName="demoArray" 
-     *ngFor="let arrayItem of arrayItems; let i=index">
-        
-     <label  
+<form [formGroup]="demoForm">
+  <label>
+    check/uncheck all
+    <input
+    type="checkbox"
+    class="toggle"
+    formControlName="toggle">
+  </label>
+
+  <div formArrayName="checkboxes" >
+
+    <div *ngFor="let arrayItem of arrayItems; let i=index" >
+
+      <label  
       class="array-item-title">{{arrayItem.title}}
 
         <input 
         type="checkbox"
-        [checked]="arrayItem.check"
-        [formControl]="i">
+        [checked]="arrayItem.checked"
+        [formControlName]="i">
 
       </label>
+    </div>
+      
   
   </div>
 </form>
