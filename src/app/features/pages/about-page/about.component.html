@@ -4,5 +4,7 @@
 
 <!-- <app-contact-form ></app-contact-form> -->
 
-<app-dynamic-form></app-dynamic-form>
+<app-dynamic-form 
+[checkboxes]="arrayItems"
+(isCheked)="CheckboxesChecked($event)"></app-dynamic-form>
 

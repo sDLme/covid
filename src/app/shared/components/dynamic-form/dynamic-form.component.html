@@ -1,4 +1,13 @@
 <p>dynamic-form works!</p>
+<pre>
+  {{demoForm.value | json }}
+</pre>
+<br>
+<br>
+<pre>
+  {{ checkboxes | json }}
+</pre>
+
 
 <form [formGroup]="demoForm">
   <label>
@@ -11,7 +20,7 @@
 
   <div formArrayName="checkboxes" >
 
-    <div *ngFor="let arrayItem of arrayItems; let i=index" >
+    <div *ngFor="let arrayItem of checkboxes; let i=index" >
 
       <label  
       class="array-item-title">{{arrayItem.title}}
@@ -20,6 +29,7 @@
         type="checkbox"
         [checked]="arrayItem.checked"
         [formControlName]="i">
+        
 
       </label>
     </div>

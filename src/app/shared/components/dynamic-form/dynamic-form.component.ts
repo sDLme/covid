@@ -1,6 +1,5 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
-import { FormBuilder, FormGroup } from '@angular/forms';
-import { FormArray } from '@angular/forms';
+import { Component, OnInit, OnDestroy, Input, Output, EventEmitter, OnChanges } from '@angular/core';
+import { FormBuilder, FormGroup, FormArray, ValidatorFn, Validators } from '@angular/forms';
 import { Subject } from 'rxjs/internal/Subject';
 import { takeUntil } from 'rxjs/operators';
 
@@ -13,26 +12,21 @@ import { takeUntil } from 'rxjs/operators';
 
 export class DynamicFormComponent implements OnInit, OnDestroy {
 
+
+  @Input() checkboxes;
+  @Output() isCheked: EventEmitter<number> = new EventEmitter<number>();
+
    public demoForm: FormGroup;
-   public arrayItems = [
-    {id: 1, title: "title1", checked: true},
-    {id: 2, title: "title2", checked: false},
-    {id: 3, title: "title3", checked: true},
-    {id: 4, title: "title4", checked: false},
-    {id: 5, title: "title5", checked: false}
-  ];
-  private destroy$: Subject<boolean> = new Subject<boolean>();
+   public array: any;
+   public min = 3;
+   private destroy$: Subject<boolean> = new Subject<boolean>();
 
    constructor(private fb: FormBuilder) {
-    this.demoForm = this.fb.group({
-      toggle: [''],
-      checkboxes: this.fb.array([])
-    });
+    this._createForm()
    }
 
    ngOnInit() {
-     this.addItems()
-     this.toggle()
+    this.addCheckboxes()
    }
 
    ngOnDestroy() {
@@ -41,20 +35,41 @@ export class DynamicFormComponent implements OnInit, OnDestroy {
   }
 
 
-   get demoArray() {
-    return this.demoForm.get('checkboxes') as FormArray;
-   };
+  private _createForm() {
+    this.demoForm = this.fb.group({
+      toggle: [''],
+      checkboxes: this.fb.array([])
+    });
 
-  private addItems() {
-    this.demoArray.push(this.fb.control(this.arrayItems));
-  }
-
-  private toggle() {
     this.demoForm.get('toggle').valueChanges
     .pipe(takeUntil(this.destroy$))
     .subscribe( value => {
-      this.arrayItems.forEach(item => item.checked = value);
+      this.checkboxes.forEach(item => item.checked = value);
+      const count = this.checkboxes.filter((obj) => obj.checked === true).length;
+      this.isCheked.emit(value)
     })
+
+    this.demoForm.controls.checkboxes.valueChanges
+    .pipe(takeUntil(this.destroy$))
+    .subscribe(value => {
+    
+      const count = this.checkboxes.filter((obj) => obj.checked === true).length;
+      console.log(count)
+      })
+    
+
+  }
+
+   get demoArray() {
+     return  this.demoForm.get('checkboxes') as FormArray;
+   };
+
+  private addCheckboxes() {
+    this.checkboxes.forEach((o, i) => {
+      const control = this.fb.control(o.checked); // put cheked value from API data
+      (this.demoForm.controls.checkboxes as FormArray).push(control);
+    });
+
   }
 
 }

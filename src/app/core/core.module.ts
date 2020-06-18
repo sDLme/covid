@@ -21,7 +21,7 @@ import { ApiService } from './services/api.service';
 import { MatIconModule} from '@angular/material/icon';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatButtonModule } from '@angular/material/button';
-import { FormsModule} from '@angular/forms';
+import { FormsModule, ReactiveFormsModule} from '@angular/forms';
 
 
 
@@ -36,7 +36,8 @@ import { FormsModule} from '@angular/forms';
   exports: [
     HeaderComponent,
     FooterComponent,
-    CoreLayoutComponent
+    CoreLayoutComponent,
+    ReactiveFormsModule
   ],
   imports: [
     CommonModule,
@@ -46,6 +47,7 @@ import { FormsModule} from '@angular/forms';
     MatButtonModule,
     FormsModule,
     NgSelectModule,
+    ReactiveFormsModule,
     SharedModule
   ]
 })
