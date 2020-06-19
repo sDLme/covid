@@ -18,7 +18,8 @@ export class DynamicFormComponent implements OnInit, OnDestroy {
 
    public demoForm: FormGroup;
    public array: any;
-   public min = 3;
+   public min = 4;
+   public checkedCheckbox: number;
    private destroy$: Subject<boolean> = new Subject<boolean>();
 
    constructor(private fb: FormBuilder) {
@@ -27,6 +28,8 @@ export class DynamicFormComponent implements OnInit, OnDestroy {
 
    ngOnInit() {
     this.addCheckboxes()
+
+  
    }
 
    ngOnDestroy() {
@@ -44,20 +47,35 @@ export class DynamicFormComponent implements OnInit, OnDestroy {
     this.demoForm.get('toggle').valueChanges
     .pipe(takeUntil(this.destroy$))
     .subscribe( value => {
-      this.checkboxes.forEach(item => item.checked = value);
-      const count = this.checkboxes.filter((obj) => obj.checked === true).length;
+
+      // foreach all checkboxes controls and put new value 
+     this.checkboxes.forEach((o, i) => {
+      (this.demoForm.controls.checkboxes as FormArray).at(i).patchValue(value);
+    });
+
+    if(value == true) {
+      this.demoForm.controls.checkboxes.disable({ emitEvent: false })
+    }
+      // pass to parent thet all checkboxes is cheched true/false
       this.isCheked.emit(value)
     })
+
+
 
     this.demoForm.controls.checkboxes.valueChanges
     .pipe(takeUntil(this.destroy$))
     .subscribe(value => {
-    
-      const count = this.checkboxes.filter((obj) => obj.checked === true).length;
-      console.log(count)
-      })
-    
+        this.checkedCheckbox = value.filter((obj) => obj === true).length;
 
+        // disable all checkboxes FormArray form controls 
+        if(this.checkedCheckbox >= this.min && value == false){
+          this.demoForm.controls.checkboxes.disable({ emitEvent: false })
+          
+        } else {
+          this.demoForm.controls.checkboxes.enable({ emitEvent: false })
+        }
+      })
+      
   }
 
    get demoArray() {
