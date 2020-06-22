@@ -11,6 +11,7 @@ import { ShowingAuthorComponent } from './shared/components/showing-author/showi
 import { AppRoutingModule } from './app-routing.module';
 import { SharedModule } from './shared/shared.module';
 import { CoreModule } from './core/core.module';
+import { AuthModule } from './auth/auth.module';
 
 
 // components
@@ -32,6 +33,7 @@ import {MatDividerModule} from '@angular/material/divider';
   imports: [
     BrowserModule,
     SharedModule,
+    AuthModule,
     CoreModule.forRoot(),
     AppRoutingModule,
     BrowserAnimationsModule,

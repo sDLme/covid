@@ -4,8 +4,7 @@ import { FormBuilder, FormGroup, Validators, AbstractControl } from '@angular/fo
 
 @Component({
   selector: 'app-registration-form',
-  templateUrl: './registration-form.component.html',
-  styleUrls: ['./registration-form.component.scss']
+  templateUrl: './registration-form.component.html'
 })
 export class RegistrationFormComponent implements OnInit {
 

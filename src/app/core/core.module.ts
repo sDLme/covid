@@ -10,8 +10,6 @@ import { SharedModule } from '../shared/shared.module';
 import { HeaderComponent } from './components/header/header.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { CoreLayoutComponent } from './core-layout.component';
-import { RegistrationPageComponent } from './components/registration/registration-page/registration-page.component';
-import { RegistrationFormComponent } from './components/registration/registration-form/registration-form.component';
 
 // services
 import { ConsoleService } from './services/console.service';
@@ -30,8 +28,6 @@ import { FormsModule, ReactiveFormsModule} from '@angular/forms';
     HeaderComponent,
     FooterComponent,
     CoreLayoutComponent,
-    RegistrationFormComponent,
-    RegistrationPageComponent
   ],
   exports: [
     HeaderComponent,
