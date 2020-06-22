@@ -2,6 +2,7 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
 import {MatPaginator} from '@angular/material/paginator';
+import { FormGroup, FormBuilder } from '@angular/forms';
 
 export interface PeriodicElement {
   name: string;
@@ -57,18 +58,37 @@ const ELEMENT_DATA: PeriodicElement[] = [
   styleUrls: ['./classes.component.scss']
 })
 export class ClassesComponent implements OnInit {
+
+  
   displayedColumns: string[] = ['position', 'name', 'weight', 'time'];
   dataSource = new MatTableDataSource(ELEMENT_DATA);
+  public userEditForm: FormGroup;
 
   @ViewChild(MatPaginator, {static: true}) paginator: MatPaginator;
   @ViewChild(MatSort, {static: true}) sort: MatSort;
 
-  constructor() { }
+  constructor(
+    private fb: FormBuilder,
+  ) { }
 
   ngOnInit(): void {
+    this.createForm()
     this.dataSource.paginator = this.paginator;
     this.dataSource.sort = this.sort;
-    console.log(this.dataSource);
   }
+
+  public createForm() {
+    this.userEditForm = this.fb.group({
+      region: ['']
+    })
+  }
+
+  public addFormControl(name: string, formGroup: FormGroup) : void {
+		this.userEditForm.addControl(name, formGroup);
+  }
+  
+  public onSubmit() {
+		console.log(' Parent Form =>',this.userEditForm.value);
+	}
 
 }

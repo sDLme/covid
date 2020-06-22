@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 
 // modules
 import { ClassesRoutingModule } from './classes-routing.module';
+import { SharedModule } from 'src/app/shared/shared.module';
 
 // components
 import { ClassesComponent } from './classes.component';
@@ -20,7 +21,8 @@ import { MatPaginatorModule } from '@angular/material/paginator';
         ClassesRoutingModule,
         MatTableModule,
         MatSortModule,
-        MatPaginatorModule
+        MatPaginatorModule,
+        SharedModule
     ]
 })
 export class ClassesModule { }

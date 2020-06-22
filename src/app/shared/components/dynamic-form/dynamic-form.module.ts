@@ -4,6 +4,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 
 // component
 import { DynamicFormComponent } from './dynamic-form.component';
+import { SharedModule } from '../../shared.module';
 
 
 
@@ -12,7 +13,8 @@ import { DynamicFormComponent } from './dynamic-form.component';
   declarations: [DynamicFormComponent],
   imports: [
     CommonModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    SharedModule
   ],
   exports: [DynamicFormComponent],
 })

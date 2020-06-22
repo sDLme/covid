@@ -31,3 +31,21 @@
 </table>
 
 <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]"></mat-paginator>
+
+<hr>
+
+<h2>User Edit Form</h2>
+
+<form [formGroup]="userEditForm" (submit)="onSubmit()">
+
+    <div class="form-group">
+        <label>Region</label>
+        <input type="text" class="form-control" formControlName="region">
+    </div>
+
+
+    <app-contact-form-components (formReady)="addFormControl('userAddress', $event)"></app-contact-form-components>
+
+    <button>Submit</button>
+
+</form>
