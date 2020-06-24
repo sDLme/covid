@@ -1,15 +1,31 @@
-<form [formGroup]="form" class="border p-3">
-    <div class="form-group">
+
+    <div class="form-group" [formGroup]="parentForm">
         <label for="city">City</label>
-        <input name="city" class="form-control" type="text" formControlName="city" />
-    </div>
-    <div class="form-group">
-        <label for="housenumber">email</label>
-        <input name="email" class="form-control" type="email" formControlName="email" />
-    </div>
-    <div class="form-group">
-        <label for="city">password</label>
-        <input name="password" class="form-control" type="password" formControlName="password" />
+        <input name="city" class="form-control" type="text" [formControlName]="'city'" />
     </div>
 
-</form>
+    <div *ngIf="parentForm.get('city').invalid && (parentForm.get('city').dirty || parentForm.get('city').touched)"
+         class="alert alert-danger">
+         <app-validation-errors [errors]="parentForm.get('city').errors" ></app-validation-errors> 
+   </div>
+ 
+
+   <div class="form-group" [formGroup]="parentForm">
+        <label for="housenumber">email</label>
+        <input name="email" class="form-control" type="email" [formControlName]="'email'" />
+    </div>
+
+    <div *ngIf="parentForm.get('email').invalid && (parentForm.get('email').dirty || parentForm.get('email').touched)"
+         class="alert alert-danger">
+         <app-validation-errors [errors]="parentForm.get('email').errors" ></app-validation-errors> 
+   </div>
+
+    <div class="form-group" [formGroup]="parentForm">
+        <label for="city">password</label>
+        <input name="password" class="form-control" type="password" formControlName="password" />
+    </div> 
+    
+    <div *ngIf="parentForm.get('password').invalid && (parentForm.get('password').dirty || parentForm.get('password').touched)"
+         class="alert alert-danger">
+         <app-validation-errors [errors]="parentForm.get('password').errors" ></app-validation-errors> 
+   </div>

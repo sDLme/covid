@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-home',
@@ -23,19 +23,18 @@ export class HomeComponent implements OnInit {
     this.userDeliveryForm = this.fb.group({
       name: [''],
       phone: [''],
-      confirmPass: ['']
+      confirmPass: [''],
+      
+      // child inputs
+      city: ['Che', Validators.required],
+      email: ['', [Validators.required, Validators.email]],
+      password: ['',Validators.required]
     })
+
   }
 
-  public addFormControl(name: string, formGroup: FormGroup) : void {
-		this.userDeliveryForm.addControl(name, formGroup);
-  }
-  
   public onSubmit() {
-		console.log(' Parent Form =>',this.userDeliveryForm.value);
+		console.log(' Parent Form =>',this.userDeliveryForm.controls);
 	}
-
-
-
 
 }

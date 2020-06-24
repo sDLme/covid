@@ -19,7 +19,8 @@
         <input type="phone"  class="form-control" formControlName="phone"> 
     </div>
 
-    <app-contact-form-components (formReady)="addFormControl('userDeliveryAddress', $event)"></app-contact-form-components>
+    <app-contact-form-components 
+       [parentForm]="userDeliveryForm"></app-contact-form-components>
 
     <div class="form-group">
         <label>Confirm Pass</label>

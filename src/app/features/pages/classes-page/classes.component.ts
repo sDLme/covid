@@ -2,7 +2,7 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
 import {MatPaginator} from '@angular/material/paginator';
-import { FormGroup, FormBuilder } from '@angular/forms';
+import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 
 export interface PeriodicElement {
   name: string;
@@ -79,16 +79,18 @@ export class ClassesComponent implements OnInit {
 
   public createForm() {
     this.userEditForm = this.fb.group({
-      region: ['']
+      region: [''],
+      
+      // child inputs
+      city: ['', Validators.required],
+      email: ['', [Validators.required, Validators.email]],
+      password: ['',Validators.required]
     })
   }
 
-  public addFormControl(name: string, formGroup: FormGroup) : void {
-		this.userEditForm.addControl(name, formGroup);
-  }
   
   public onSubmit() {
-		console.log(' Parent Form =>',this.userEditForm.value);
+		console.log(' Parent Form =>', this.userEditForm.value);
 	}
 
 }
