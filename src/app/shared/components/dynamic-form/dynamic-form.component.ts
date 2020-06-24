@@ -18,7 +18,7 @@ export class DynamicFormComponent implements OnInit, OnDestroy {
 
    public demoForm: FormGroup;
    public array: any;
-   public min = 4;
+   public min = 3;
    public checkedCheckbox: number;
    private destroy$: Subject<boolean> = new Subject<boolean>();
 
@@ -61,22 +61,27 @@ export class DynamicFormComponent implements OnInit, OnDestroy {
     })
 
 
-
     this.demoForm.controls.checkboxes.valueChanges
     .pipe(takeUntil(this.destroy$))
     .subscribe(value => {
-        this.checkedCheckbox = value.filter((obj) => obj === true).length;
 
-        // disable all checkboxes FormArray form controls 
-        if(this.checkedCheckbox >= this.min && value == false){
-          this.demoForm.controls.checkboxes.disable({ emitEvent: false })
-          
-        } else {
-          this.demoForm.controls.checkboxes.enable({ emitEvent: false })
-        }
-      })
-      
+      this.checkedCheckbox = value.filter((o) => o === true).length;
+
+      // disable checkboxes FormArray form controls 
+      if(this.checkedCheckbox >= this.min) {
+
+         this.demoArray.controls.forEach((o, i) => {
+           if(o.value === false) {
+            o.disable({ emitEvent: false })
+           }
+        });
+
+      } else { 
+        this.demoForm.controls.checkboxes.enable({ emitEvent: false })
+      }
+    });
   }
+
 
    get demoArray() {
      return  this.demoForm.get('checkboxes') as FormArray;
@@ -89,5 +94,15 @@ export class DynamicFormComponent implements OnInit, OnDestroy {
     });
 
   }
+
+  
+
+
+ // console.log(this.demoArray.controls.values)
+  
+      
+  
+
+
 
 }
