@@ -11,8 +11,12 @@
 <form [formGroup]="userDeliveryForm" (submit)="onSubmit()">
 
     <div class="form-group">
-        <label>name</label>
-        <input type="text" class="form-control" formControlName="name">
+      <app-input
+      [label]="'name'"
+      [inputType]="'text'"
+      [inputClass]="'form-control'"
+      [placeholder]="'putt you\'r name here'"
+      [inputName]="'name'"></app-input>
     </div>
     <div class="form-group">
         <label>phone</label>

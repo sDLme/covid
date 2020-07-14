@@ -1,0 +1,13 @@
+<div
+  class="input-wrapp"
+  [class.input-wrapp--bottom]="labelPosition === position.Bottom"
+  [class.input-wrapp--left]="labelPosition === position.Left"
+  [class.input-wrapp--right]="labelPosition === position.Right">
+  <label class="label-base">{{ label }}</label>
+  <input
+    [type]="inputType"
+    [formControl]="formControlName"
+    [class]="inputClass"
+    [placeholder]="placeholder">
+
+</div>

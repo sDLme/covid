@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators, AbstractControl } from '@angular/forms';
 
+// enem 
+import { LabelPosition } from './../../../shared/components/input/labelPosition'
+
 
 @Component({
   selector: 'app-registration-form',
@@ -13,6 +16,7 @@ export class RegistrationFormComponent implements OnInit {
   public countries: any;
   public areas: any;
   public showAreas = false;
+  public labelPosition = LabelPosition;
 
   constructor(
     private fb: FormBuilder,

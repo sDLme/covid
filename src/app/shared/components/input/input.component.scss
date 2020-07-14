@@ -1,0 +1,32 @@
+
+
+.input-wrapp {
+  display: flex;
+  font-size: 16px;
+  line-height: 21px;
+
+  &--bottom {
+    flex-direction: column-reverse;
+
+    .label-base {
+      margin-top: 5px;
+    }
+  }
+
+  &--left {
+    align-items: baseline;
+
+    .label-base {
+      margin-right: 5px;
+    }
+  }
+
+  &--right {
+    flex-direction: row-reverse;
+    align-items: baseline;
+
+    .label-base {
+      margin-left: 5px;
+    }
+  }
+}

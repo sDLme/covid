@@ -3,6 +3,9 @@ import { FormBuilder, FormGroup, FormArray, ValidatorFn, Validators } from '@ang
 import { Subject } from 'rxjs/internal/Subject';
 import { takeUntil } from 'rxjs/operators';
 
+// enem 
+import { LabelPosition } from './../../../shared/components/input/labelPosition'
+
 @Component({
   selector: 'app-dynamic-form',
   templateUrl: './dynamic-form.component.html',
@@ -21,6 +24,7 @@ export class DynamicFormComponent implements OnInit, OnDestroy {
    public min = 3;
    public checkedCheckbox: number;
    private destroy$: Subject<boolean> = new Subject<boolean>();
+   public labelPosition = LabelPosition;
 
    constructor(private fb: FormBuilder) {
     this._createForm()

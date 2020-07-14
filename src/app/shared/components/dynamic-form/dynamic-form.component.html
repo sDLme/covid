@@ -2,13 +2,13 @@
 
 
 <form [formGroup]="demoForm">
-  <label>
-    check/uncheck all
-    <input
-    type="checkbox"
-    class="toggle"
-    formControlName="toggle">
-  </label>
+ 
+  <app-input 
+    [label]="'check/uncheck all'" 
+    [labelPosition]="labelPosition.Left" 
+    [inputType]="'checkbox'" 
+    [inputClass]="'toggle'"
+    [inputName]="'toggle'"></app-input>
 
   <div formArrayName="checkboxes" >
 
@@ -19,9 +19,10 @@
 
         <input 
         type="checkbox" 
-        [formControlName]="i"
-        >
+        [formControlName]="i">
       </label>
+
+      
     </div>
       
   

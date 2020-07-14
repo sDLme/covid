@@ -8,10 +8,13 @@
 
 
   <div class="form-group">
-    <input 
-    class="form-control" 
-    type="text" 
-    formControlName="name">
+    <app-input 
+      [label]="'Name'"
+      [labelPosition]="labelPosition.Left"
+      [inputType]="'text'" 
+      [inputClass]="'form-control'" 
+      [placeholder]="'put you\'r name here'"
+      [inputName]="'name'"></app-input>
 
     <div *ngIf="registrationForm.get('name').invalid && (registrationForm.get('name').dirty || registrationForm.get('name').touched)"
          class="alert alert-danger">
@@ -25,10 +28,14 @@
   
 
     <div class="form-group">
-      <input 
-      class="form-control"  
-      type="email" 
-      formControlName="email">
+      <app-input 
+        [label]="'Email'" 
+        [labelPosition]="labelPosition.Left" 
+        [inputType]="'text'" 
+        [inputClass]="'form-control'"
+        [placeholder]="'put email name'" 
+        [inputName]="'email'"></app-input>
+
       <div *ngIf="registrationForm.get('email').invalid && registrationForm.get('email').touched" class="alert alert-danger">
         <app-validation-errors [errors]="registrationForm.get('email').errors " ></app-validation-errors> 
       </div>
@@ -79,10 +86,13 @@
     
   
     <div class="form-group">
-      <input  
-      class="form-control" 
-      type="password" 
-      formControlName="password">
+      <app-input 
+        [label]="'Password'" 
+        [labelPosition]="labelPosition.Left" 
+        [inputType]="'password'" 
+        [inputClass]="'form-control'"
+        [placeholder]="'password'" 
+        [inputName]="'password'"></app-input>
 
       <div *ngIf="registrationForm.get('password').invalid && registrationForm.get('password').touched" class="alert alert-danger">
         <app-validation-errors [errors]="registrationForm.get('password').errors "></app-validation-errors> 
@@ -91,10 +101,12 @@
 
     
     <div class="form-group">
-      <input 
-      class="form-control"  
-      type="password" 
-      formControlName="confirmPass">
+      <app-input 
+        [label]="'Confirm password'" 
+        [inputType]="'password'"
+        [inputClass]="'form-control'" 
+        [placeholder]="'confirm password'" 
+        [inputName]="'confirmPass'"></app-input>
 
       <div *ngIf="registrationForm.get('confirmPass').invalid && registrationForm.get('confirmPass').touched" class="alert alert-danger">
         <app-validation-errors [errors]="registrationForm.get('confirmPass').errors " ></app-validation-errors> 

@@ -4,10 +4,11 @@ import { ReactiveFormsModule } from '@angular/forms';
 
 // modules 
 import { ValidationErrorsModule } from './components/validation-errors/validation-errors.module';
+import { InputModule } from './components/input/input.module';
 
 // components
 import { ContactFormComponent } from './components/contact-form/contact-form.component';
-import { ContactFormComponentsComponent } from './components/contact-form-component/contact-form-components/contact-form-components.component';
+import { ContactFormComponentsComponent } from './components/contact-form-component/contact-form-components/contact-form-components.component';;
 
 //directives
 import { ForScreenDirective } from './directives/for-screen.directive';
@@ -23,12 +24,14 @@ import { ForScreenDirective } from './directives/for-screen.directive';
     ContactFormComponent,
     ForScreenDirective,
     ValidationErrorsModule,
-    ContactFormComponentsComponent
+    ContactFormComponentsComponent,
+    InputModule
   ],
   imports: [
     CommonModule,
     ReactiveFormsModule,
-    ValidationErrorsModule
+    ValidationErrorsModule,
+    InputModule
   ]
 })
 export class SharedModule {
